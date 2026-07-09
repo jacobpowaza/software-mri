@@ -193,19 +193,21 @@ Each issue deducts from the base 100%. The deduction depends on:
 
 | Command | Description |
 |---------|-------------|
-| `mri scan` | Run a scan and open the interactive TUI |
-| `mri scan --ci` | CI mode — JSON output, exits non-zero below threshold |
-| `mri scan --format markdown` | Export report as markdown (use --output) |
-| `mri scan --format html` | Export report as HTML |
-| `mri report` | Show last scan result |
-| `mri doctor` | Dependency health check |
-| `mri explain <issue-id>` | Detailed explanation of a specific issue |
-| `mri export <format>` | Export the last scan |
-| `mri init` | Create .mri/config.json |
-| `mri config` | Open config in editor |
-| `mri tasks list` | List tasks |
-| `mri tasks add <title>` | Create a task |
-| `mri tasks done <id>` | Mark task complete |
+| `npx software-mri scan` | Run a scan and open the interactive TUI |
+| `npx software-mri scan --ci` | CI mode — JSON output, exits non-zero below threshold |
+| `npx software-mri scan --format markdown` | Export report as markdown (use --output) |
+| `npx software-mri scan --format html` | Export report as HTML |
+| `npx software-mri report` | Show last scan result |
+| `npx software-mri doctor` | Dependency health check |
+| `npx software-mri explain <issue-id>` | Detailed explanation of a specific issue |
+| `npx software-mri export <format>` | Export the last scan |
+| `npx software-mri init` | Create .mri/config.json |
+| `npx software-mri config` | Open config in editor |
+| `npx software-mri tasks list` | List tasks |
+| `npx software-mri tasks add <title>` | Create a task |
+| `npx software-mri tasks done <id>` | Mark task complete |
+
+Alternatively, with a global install (`npm install -g software-mri`), replace `npx software-mri` with `mri`.
 
 ## Configuration
 
