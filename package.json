@@ -1,0 +1,34 @@
+{
+  "name": "software-mri",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Production readiness diagnosis for your codebase",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "pnpm -r build",
+    "dev": "pnpm -r dev",
+    "clean": "pnpm -r clean",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test",
+    "typecheck": "pnpm -r typecheck",
+    "prepare": "pnpm build"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "packageManager": "pnpm@9.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacobpowaza/software-mri.git"
+  },
+  "homepage": "https://github.com/jacobpowaza/software-mri#readme",
+  "bugs": {
+    "url": "https://github.com/jacobpowaza/software-mri/issues"
+  },
+  "devDependencies": {
+    "@types/node": "26.1.1",
+    "typescript": "7.0.2",
+    "vitest": "4.1.10"
+  }
+}

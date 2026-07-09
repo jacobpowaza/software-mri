@@ -1,0 +1,37 @@
+{
+  "name": "@mri/ui",
+  "version": "0.1.0",
+  "description": "MRI Ink-based interactive TUI components",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./components/*": "./dist/components/*.js"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "lint": "echo ok",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --passWithNoTests"
+  },
+  "dependencies": {
+    "@mri/core": "workspace:*",
+    "ink": "^5.0.1",
+    "react": "^18.3.1",
+    "string-width": "^7.2.0",
+    "cli-boxes": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacobpowaza/software-mri.git"
+  }
+}

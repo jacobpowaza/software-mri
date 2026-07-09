@@ -1,0 +1,29 @@
+{
+  "tasks": [
+    {
+      "id": "TASK-MRCU62FL-0VLD",
+      "title": "Finish the scoreboard in the game.",
+      "deadline": "2026-07-10T01:36:38.860Z",
+      "createdAt": "2026-07-09T01:36:38.865Z",
+      "status": "active",
+      "progress": 25,
+      "notes": [
+        {
+          "text": "Finish the scoreboard in the game.",
+          "createdAt": "2026-07-09T01:36:38.865Z"
+        },
+        {
+          "text": "I started working on the GUI.",
+          "createdAt": "2026-07-09T01:36:45.567Z"
+        }
+      ],
+      "history": [
+        {
+          "status": "active",
+          "timestamp": "2026-07-09T01:36:38.865Z",
+          "progress": 25
+        }
+      ]
+    }
+  ]
+}

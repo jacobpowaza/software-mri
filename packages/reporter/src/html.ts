@@ -1,0 +1,131 @@
+import type { ScanResult } from '@mri/core';
+
+export function generateHtmlReport(result: ScanResult): string {
+  const categoriesHtml = result.categories.map(cat => `
+    <div class="category-card ${cat.status}">
+      <div class="category-header">
+        <h3>${getCategoryLabel(cat.category)}</h3>
+        <span class="category-score">${cat.score}%</span>
+        <span class="category-status ${cat.status}">${cat.status.toUpperCase()}</span>
+      </div>
+      <p class="category-summary">${cat.summary}</p>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: ${cat.score}%; background: ${getScoreColor(cat.score)}"></div>
+      </div>
+      ${cat.issues.length > 0 ? `
+      <details>
+        <summary>${cat.issues.length} issues</summary>
+        <ul class="issue-list">
+          ${cat.issues.map(i => `
+          <li class="issue-item severity-${i.severity}">
+            <strong>${i.title}</strong>
+            <p>${i.description}</p>
+            ${i.files.length > 0 ? `<code>${i.files.join('</code>, <code>')}</code>` : ''}
+            <ul>${i.tips.map(t => `<li>${t}</li>`).join('')}</ul>
+          </li>`).join('')}
+        </ul>
+      </details>` : '<p class="no-issues">No issues found</p>'}
+    </div>`).join('\n');
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Software MRI Report: ${escapeHtml(result.project.name)}</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0d1117; color: #c9d1d9; padding: 32px; }
+    h1 { color: #58a6ff; margin-bottom: 8px; }
+    .meta { color: #8b949e; margin-bottom: 24px; }
+    .score-hero { text-align: center; padding: 40px; background: #161b22; border-radius: 12px; margin-bottom: 24px; border: 1px solid #30363d; }
+    .score-number { font-size: 72px; font-weight: bold; color: ${scoreColor(result.totalScore)}; }
+    .progress-bar { height: 12px; background: #21262d; border-radius: 6px; margin: 16px 0; overflow: hidden; }
+    .progress-fill { height: 100%; border-radius: 6px; transition: width 0.5s; }
+    .categories { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 16px; }
+    .category-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px; }
+    .category-card.pass { border-left: 4px solid #3fb950; }
+    .category-card.warn { border-left: 4px solid #d29922; }
+    .category-card.fail { border-left: 4px solid #f85149; }
+    .category-header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+    .category-header h3 { flex: 1; }
+    .category-score { font-size: 24px; font-weight: bold; }
+    .category-status { font-size: 11px; padding: 2px 8px; border-radius: 12px; font-weight: 600; }
+    .category-status.pass { background: rgba(63, 185, 80, 0.2); color: #3fb950; }
+    .category-status.warn { background: rgba(210, 153, 34, 0.2); color: #d29922; }
+    .category-status.fail { background: rgba(248, 81, 73, 0.2); color: #f85149; }
+    .category-summary { color: #8b949e; margin-bottom: 8px; }
+    details { margin-top: 12px; }
+    summary { cursor: pointer; color: #58a6ff; padding: 4px 0; }
+    .issue-list { list-style: none; margin-top: 8px; }
+    .issue-item { padding: 12px; border: 1px solid #21262d; border-radius: 6px; margin-bottom: 8px; }
+    .issue-item.severity-critical { border-left: 3px solid #f85149; }
+    .issue-item.severity-high { border-left: 3px solid #d29922; }
+    .issue-item.severity-medium { border-left: 3px solid #d29922; }
+    .issue-item.severity-low { border-left: 3px solid #3fb950; }
+    .issue-item code { display: block; color: #8b949e; font-size: 13px; margin: 4px 0; }
+    .issue-item ul { margin-top: 8px; padding-left: 20px; color: #8b949e; }
+    .no-issues { color: #3fb950; font-style: italic; }
+    .footer { margin-top: 24px; color: #484f58; text-align: center; font-size: 13px; }
+    @media (max-width: 768px) { .categories { grid-template-columns: 1fr; } body { padding: 12px; } .score-number { font-size: 48px; } }
+  </style>
+</head>
+<body>
+  <h1>Software MRI Report</h1>
+  <div class="meta">
+    Project: ${escapeHtml(result.project.name)} |
+    Frameworks: ${result.project.frameworks.join(', ') || 'None'} |
+    Scanned: ${result.scannedFiles} files in ${formatDuration(result.scanDurationMs)} |
+    Issues: ${result.totalIssues}
+  </div>
+
+  <div class="score-hero">
+    <div class="score-number">${result.totalScore}%</div>
+    <p>Production Readiness Score</p>
+    <div class="progress-bar">
+      <div class="progress-fill" style="width: ${result.totalScore}%; background: ${scoreColor(result.totalScore)}"></div>
+    </div>
+  </div>
+
+  <div class="categories">
+    ${categoriesHtml}
+  </div>
+
+  <div class="footer">
+    Generated by Software MRI v0.1.0 &mdash; ${new Date().toISOString()}
+  </div>
+</body>
+</html>`;
+}
+
+function getCategoryLabel(id: string): string {
+  const labels: Record<string, string> = {
+    architecture: 'Architecture', dependencies: 'Dependencies', deadCode: 'Dead Code',
+    duplicates: 'Duplicates', typeSafety: 'Type Safety', testCoverage: 'Test Coverage',
+    configHealth: 'Config Health', securityHygiene: 'Security', performanceRisk: 'Performance',
+    maintainability: 'Maintainability',
+  };
+  return labels[id] || id;
+}
+
+function scoreColor(score: number): string {
+  if (score >= 80) return '#3fb950';
+  if (score >= 50) return '#d29922';
+  return '#f85149';
+}
+
+function getScoreColor(score: number): string {
+  return scoreColor(score);
+}
+
+function escapeHtml(str: string): string {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function formatDuration(ms: number): string {
+  if (ms < 1000) return `${ms}ms`;
+  if (ms < 60000) return `${(ms / 1000).toFixed(1)}s`;
+  const m = Math.floor(ms / 60000);
+  const s = Math.round((ms % 60000) / 1000);
+  return `${m}m ${s}s`;
+}

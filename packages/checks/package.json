@@ -1,0 +1,31 @@
+{
+  "name": "@mri/checks",
+  "version": "0.1.0",
+  "description": "MRI analysis checks (deps, TS, security, etc.)",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "lint": "echo ok",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --passWithNoTests"
+  },
+  "dependencies": {
+    "@mri/core": "workspace:*",
+    "@mri/scanner": "workspace:*",
+    "@mri/config": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacobpowaza/software-mri.git"
+  }
+}
