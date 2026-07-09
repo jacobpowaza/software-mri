@@ -46,6 +46,5 @@
   "bugs": {
     "url": "https://github.com/jacobpowaza/software-mri/issues"
   },
-  "keywords": ["code-quality", "production-readiness", "scanner", "codebase-analysis", "cli"],
-  "author": "Jacob Powaza"
+  "keywords": ["code-quality", "production-readiness", "scanner", "codebase-analysis", "cli"]
 }
