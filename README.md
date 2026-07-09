@@ -1,9 +1,10 @@
 # MRI — Production Readiness Scanner
 
 [![CI](https://github.com/jacobpowaza/software-mri/actions/workflows/ci.yml/badge.svg)](https://github.com/jacobpowaza/software-mri/actions/workflows/ci.yml)
-![Node](https://img.shields.io/badge/node-%3E%3D18-brightgreen)
-![License](https://img.shields.io/badge/license-MIT-blue)
 [![npm version](https://img.shields.io/npm/v/software-mri)](https://www.npmjs.com/package/software-mri)
+[![Downloads](https://img.shields.io/npm/dm/software-mri)](https://www.npmjs.com/package/software-mri)
+[![Node](https://img.shields.io/node/v/software-mri)](https://nodejs.org)
+![License](https://img.shields.io/badge/license-MIT-blue)
 
 **MRI scans your codebase and gives you a practical "production readiness" diagnosis** — no AI, no internet, just hard analysis of 50+ metrics across 10 categories.
 
@@ -28,7 +29,7 @@ MRI is none of those. It's a single `mri scan` command that runs locally, reads 
 ## Quick Start
 
 ```bash
-# Run a scan
+# Run a scan (from your project root)
 npx software-mri scan
 
 # Export a report
@@ -233,35 +234,22 @@ Create `.mri/config.json` to customize scoring:
 
 ## Installation
 
-### Global install
+```bash
+npm install software-mri
+```
+
+Or globally for `mri` command anywhere:
 
 ```bash
 npm install -g software-mri
 mri scan
 ```
 
-### One-off (no install)
+Or run without installing:
 
 ```bash
 npx software-mri scan
 ```
-
-### From source
-
-```bash
-git clone https://github.com/jacobpowaza/software-mri.git
-cd software-mri
-pnpm install
-pnpm build
-pnpm link --global
-mri scan
-```
-
-## Requirements
-
-- Node.js 18+
-- macOS, Windows, or Linux
-- Workspace: any project with a package.json
 
 ## Architecture
 
