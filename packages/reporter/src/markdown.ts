@@ -1,4 +1,4 @@
-import type { ScanResult } from '@mri/core';
+import type { ScanResult } from '@software-mri/core';
 
 export function generateMarkdownReport(result: ScanResult): string {
   const lines: string[] = [];

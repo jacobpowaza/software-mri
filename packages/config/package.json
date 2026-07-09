@@ -1,5 +1,5 @@
 {
-  "name": "@mri/config",
+  "name": "@software-mri/config",
   "version": "0.1.0",
   "description": "MRI config file loading and validation",
   "license": "MIT",
@@ -17,7 +17,7 @@
     "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
-    "@mri/core": "workspace:*",
+    "@software-mri/core": "workspace:*",
     "cosmiconfig": "^9.0.0"
   },
   "publishConfig": {

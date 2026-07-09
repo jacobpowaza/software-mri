@@ -1,14 +1,14 @@
 import React from 'react';
 import { render } from 'ink';
-import { createScanContext, detectProject } from '@mri/scanner';
-import { createCheckRegistry } from '@mri/checks';
-import { calculateScores } from '@mri/scoring';
-import { loadConfig } from '@mri/config';
+import { createScanContext, detectProject } from '@software-mri/scanner';
+import { createCheckRegistry } from '@software-mri/checks';
+import { calculateScores } from '@software-mri/scoring';
+import { loadConfig } from '@software-mri/config';
 import { writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import type { ScanResult, ScanProgress, Issue, Task, IssueStatus } from '@mri/core';
-import { loadTasks, addTask, toggleTask, deleteTask, updateTaskProgress, addTaskNote } from '@mri/core';
-import { Dashboard, ScanProgressView, IssueDetail, WelcomeScreen, ExportScreen, HelpScreen, TasksScreen, TaskDetailScreen, AddTaskScreen } from '@mri/ui';
+import type { ScanResult, ScanProgress, Issue, Task, IssueStatus } from '@software-mri/core';
+import { loadTasks, addTask, toggleTask, deleteTask, updateTaskProgress, addTaskNote } from '@software-mri/core';
+import { Dashboard, ScanProgressView, IssueDetail, WelcomeScreen, ExportScreen, HelpScreen, TasksScreen, TaskDetailScreen, AddTaskScreen } from '@software-mri/ui';
 
 type AppScreen = 'welcome' | 'scanning' | 'dashboard' | 'issue-detail' | 'export' | 'help' | 'tasks' | 'task-detail' | 'add-task';
 
@@ -123,7 +123,7 @@ function MriApp(): React.ReactElement | null {
 
   const handleExportResult = async (format: 'json' | 'markdown' | 'html') => {
     if (!result) return;
-    const { generateReport } = await import('@mri/reporter');
+    const { generateReport } = await import('@software-mri/reporter');
     const report = generateReport(result, format);
     await writeFile(join(process.cwd(), report.filename), report.content, 'utf-8');
   };

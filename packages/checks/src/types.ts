@@ -1,5 +1,5 @@
-import type { Issue, CategoryId, MriConfig, ProjectInfo } from '@mri/core';
-import type { ScanContext } from '@mri/scanner';
+import type { Issue, CategoryId, MriConfig, ProjectInfo } from '@software-mri/core';
+import type { ScanContext } from '@software-mri/scanner';
 
 export type CheckFn = (context: CheckContext) => Promise<Issue[]>;
 

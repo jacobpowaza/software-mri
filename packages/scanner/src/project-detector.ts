@@ -1,6 +1,6 @@
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
-import type { ProjectInfo, Framework, PackageManager } from '@mri/core';
+import type { ProjectInfo, Framework, PackageManager } from '@software-mri/core';
 
 export function detectProject(rootDir: string, packageJson: Record<string, unknown> | null): ProjectInfo {
   const name = (packageJson?.name as string) || rootDir.split('/').pop() || 'unknown';

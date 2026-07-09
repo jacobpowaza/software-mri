@@ -1,6 +1,6 @@
-import type { Issue, CategoryId, CategoryScore, MriConfig, ScanResult, ProjectInfo } from '@mri/core';
-import { CATEGORIES } from '@mri/core';
-import { calculateCategoryStatus } from '@mri/core';
+import type { Issue, CategoryId, CategoryScore, MriConfig, ScanResult, ProjectInfo } from '@software-mri/core';
+import { CATEGORIES } from '@software-mri/core';
+import { calculateCategoryStatus } from '@software-mri/core';
 
 export interface ScoreInput {
   issues: Issue[];
@@ -110,4 +110,4 @@ function generateCategoryTips(issues: Issue[]): string[] {
 }
 
 // Re-export ScanResult for convenience
-export type { ScanResult } from '@mri/core';
+export type { ScanResult } from '@software-mri/core';

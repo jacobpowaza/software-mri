@@ -1,8 +1,8 @@
 import { readdir, stat, readFile } from 'node:fs/promises';
 import { join, relative } from 'node:path';
 import { minimatch } from 'minimatch';
-import type { MriConfig } from '@mri/core';
-import { isBinaryFile } from '@mri/core';
+import type { MriConfig } from '@software-mri/core';
+import { isBinaryFile } from '@software-mri/core';
 
 export interface FileEntry {
   path: string;

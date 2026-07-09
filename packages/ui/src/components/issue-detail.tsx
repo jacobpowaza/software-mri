@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, Box, useInput } from 'ink';
-import type { Issue } from '@mri/core';
+import type { Issue } from '@software-mri/core';
 import { useTerminalSize } from '../hooks/use-terminal-size.js';
 
 interface IssueDetailProps {

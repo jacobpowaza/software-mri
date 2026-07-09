@@ -10,7 +10,7 @@ export const typescriptChecks: CheckRegistration[] = [
     description: 'Checks if TypeScript strict mode is enabled',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
+      const issues: import('@software-mri/core').Issue[] = [];
       try {
         const tsconfigRaw = await readFile(join(ctx.project.rootDir, 'tsconfig.json'), 'utf-8');
         const tsconfig = JSON.parse(tsconfigRaw);
@@ -120,7 +120,7 @@ export const typescriptChecks: CheckRegistration[] = [
     description: 'Checks if skipLibCheck is enabled (masks real type errors)',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
+      const issues: import('@software-mri/core').Issue[] = [];
       try {
         const tsconfigRaw = await readFile(join(ctx.project.rootDir, 'tsconfig.json'), 'utf-8');
         const tsconfig = JSON.parse(tsconfigRaw);
@@ -158,7 +158,7 @@ export const typescriptChecks: CheckRegistration[] = [
     description: 'Checks if noImplicitAny is enabled even when strict is off',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
+      const issues: import('@software-mri/core').Issue[] = [];
       try {
         const tsconfigRaw = await readFile(join(ctx.project.rootDir, 'tsconfig.json'), 'utf-8');
         const tsconfig = JSON.parse(tsconfigRaw);
@@ -196,8 +196,8 @@ export const typescriptChecks: CheckRegistration[] = [
     description: 'Detects source files that export nothing',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
-      const srcFiles = ctx.scan.files.filter((f: import('@mri/scanner').FileEntry) =>
+      const issues: import('@software-mri/core').Issue[] = [];
+      const srcFiles = ctx.scan.files.filter((f: import('@software-mri/scanner').FileEntry) =>
         f.relativePath.startsWith('src/') && !f.relativePath.endsWith('.test.ts') &&
         !f.relativePath.endsWith('.spec.ts') && !f.relativePath.endsWith('.d.ts') &&
         (f.relativePath.endsWith('.ts') || f.relativePath.endsWith('.tsx'))

@@ -1,4 +1,4 @@
-import type { ScanResult, CategoryScore, Issue, ReportOutput } from '@mri/core';
+import type { ScanResult, CategoryScore, Issue, ReportOutput } from '@software-mri/core';
 
 export function generateJsonReport(result: ScanResult): string {
   return JSON.stringify(serializeResult(result), null, 2);

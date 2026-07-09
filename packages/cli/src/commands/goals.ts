@@ -1,4 +1,4 @@
-import { loadTasks, addTask, toggleTask, deleteTask } from '@mri/core';
+import { loadTasks, addTask, toggleTask, deleteTask } from '@software-mri/core';
 
 export async function runTasks(args: string[]): Promise<void> {
   const rootDir = process.cwd();

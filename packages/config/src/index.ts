@@ -1,7 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { join, isAbsolute } from 'node:path';
-import type { MriConfig, CliOptions } from '@mri/core';
-import { DEFAULT_CONFIG, extractErrorMessage } from '@mri/core';
+import type { MriConfig, CliOptions } from '@software-mri/core';
+import { DEFAULT_CONFIG, extractErrorMessage } from '@software-mri/core';
 
 export async function loadConfig(rootDir: string, cliOptions?: Partial<CliOptions>): Promise<MriConfig> {
   const userConfig = await loadUserConfig(rootDir);

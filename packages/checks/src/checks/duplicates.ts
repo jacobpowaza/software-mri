@@ -8,9 +8,9 @@ export const duplicateChecks: CheckRegistration[] = [
     description: 'Detects similar or identical functions across files',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
+      const issues: import('@software-mri/core').Issue[] = [];
 
-      const srcFiles = ctx.scan.files.filter((f: import('@mri/scanner').FileEntry) =>
+      const srcFiles = ctx.scan.files.filter((f: import('@software-mri/scanner').FileEntry) =>
         f.relativePath.startsWith('src/') && !f.isBinary &&
         (f.relativePath.endsWith('.ts') || f.relativePath.endsWith('.tsx') ||
          f.relativePath.endsWith('.js') || f.relativePath.endsWith('.jsx'))

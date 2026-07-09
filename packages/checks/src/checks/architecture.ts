@@ -35,7 +35,7 @@ export const architectureChecks: CheckRegistration[] = [
         }
       }
 
-      const issues: import('@mri/core').Issue[] = [];
+      const issues: import('@software-mri/core').Issue[] = [];
       for (const [filePath, lines] of linesPerFile) {
         if (lines > threshold) {
           const severity = lines > threshold * 2 ? 'high' : lines > threshold * 1.5 ? 'medium' : 'low';
@@ -77,7 +77,7 @@ export const architectureChecks: CheckRegistration[] = [
         depthMap.set(dir, Math.max(depthMap.get(dir) || 0, parts.length - 1));
       }
 
-      const issues: import('@mri/core').Issue[] = [];
+      const issues: import('@software-mri/core').Issue[] = [];
       for (const [dirPath, depth] of depthMap) {
         if (depth > 6) {
           issues.push({
@@ -87,7 +87,7 @@ export const architectureChecks: CheckRegistration[] = [
             severity: depth > 10 ? 'high' : 'medium',
             category: 'architecture',
             confidence: 'high',
-            files: ctx.scan.files.filter((f: import('@mri/scanner').FileEntry) => f.relativePath.startsWith(dirPath)).map(f => f.relativePath),
+            files: ctx.scan.files.filter((f: import('@software-mri/scanner').FileEntry) => f.relativePath.startsWith(dirPath)).map(f => f.relativePath),
             scoreImpact: 3,
             canAutoFix: false,
             status: 'open',
@@ -110,7 +110,7 @@ export const architectureChecks: CheckRegistration[] = [
     description: 'Detects files not imported anywhere',
     enabled: true,
     async run(ctx: CheckContext) {
-      const sourceFiles = ctx.scan.files.filter((f: import('@mri/scanner').FileEntry) =>
+      const sourceFiles = ctx.scan.files.filter((f: import('@software-mri/scanner').FileEntry) =>
         f.relativePath.endsWith('.ts') || f.relativePath.endsWith('.tsx') ||
         f.relativePath.endsWith('.js') || f.relativePath.endsWith('.jsx')
       );
@@ -123,7 +123,7 @@ export const architectureChecks: CheckRegistration[] = [
         if (workspaces) {
           for (const ws of workspaces) {
             const glob = ws.replace(/\/\*+$/, '').replace(/\//g, '\\/');
-            const match = ctx.scan.files.filter((f: import('@mri/scanner').FileEntry) =>
+            const match = ctx.scan.files.filter((f: import('@software-mri/scanner').FileEntry) =>
               new RegExp(`^${glob}/package\\.json$`).test(f.relativePath)
             );
             for (const pkgFile of match) {
@@ -139,7 +139,7 @@ export const architectureChecks: CheckRegistration[] = [
         }
       }
 
-      const issues: import('@mri/core').Issue[] = [];
+      const issues: import('@software-mri/core').Issue[] = [];
 
       // Build a set of all files referenced by ANY relative import in the project
       const referencedFiles = new Set<string>();

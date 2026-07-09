@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Text, Box, useInput } from 'ink';
-import type { Goal, CategoryId } from '@mri/core';
-import { mapScoreToGoalStatus } from '@mri/core';
+import type { Goal, CategoryId } from '@software-mri/core';
+import { mapScoreToGoalStatus } from '@software-mri/core';
 import { useTerminalSize } from '../hooks/use-terminal-size.js';
 
 interface GoalsScreenProps {

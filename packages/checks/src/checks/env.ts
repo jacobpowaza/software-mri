@@ -10,7 +10,7 @@ export const envChecks: CheckRegistration[] = [
     description: 'Compares .env, .env.example, .env.local.example for consistency',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
+      const issues: import('@software-mri/core').Issue[] = [];
 
       const env = await readEnvFile(ctx.project.rootDir, '.env');
       const envExample = await readEnvFile(ctx.project.rootDir, '.env.example');
@@ -111,7 +111,7 @@ export const envChecks: CheckRegistration[] = [
     description: 'Checks if a .env file exists when one is expected',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
+      const issues: import('@software-mri/core').Issue[] = [];
       const hasEnvExample = ctx.scan.files.some(f => f.relativePath === '.env.example');
       const hasEnv = ctx.scan.files.some(f => f.relativePath === '.env');
 

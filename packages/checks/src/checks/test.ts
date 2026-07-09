@@ -9,7 +9,7 @@ export const testChecks: CheckRegistration[] = [
     description: 'Detects if a test framework is configured',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
+      const issues: import('@software-mri/core').Issue[] = [];
       const pkg = ctx.scan.packageJson;
       const hasTestFramework = pkg && (
         (pkg.devDependencies as Record<string, string>)?.['vitest'] ||
@@ -50,7 +50,7 @@ export const testChecks: CheckRegistration[] = [
     description: 'Checks if package.json has a test script',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
+      const issues: import('@software-mri/core').Issue[] = [];
       const pkg = ctx.scan.packageJson;
       if (!pkg) return issues;
 
@@ -83,7 +83,7 @@ export const testChecks: CheckRegistration[] = [
     description: 'Detects source files that lack corresponding test files',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
+      const issues: import('@software-mri/core').Issue[] = [];
       const testFiles = new Set<string>();
 
       for (const file of ctx.scan.files) {
@@ -99,7 +99,7 @@ export const testChecks: CheckRegistration[] = [
         return issues; // handled by missing framework check
       }
 
-      const sourceFiles = ctx.scan.files.filter((f: import('@mri/scanner').FileEntry) =>
+      const sourceFiles = ctx.scan.files.filter((f: import('@software-mri/scanner').FileEntry) =>
         f.relativePath.startsWith('src/') &&
         (f.relativePath.endsWith('.ts') || f.relativePath.endsWith('.tsx')) &&
         !f.relativePath.endsWith('.test.ts') && !f.relativePath.endsWith('.spec.ts') &&
@@ -153,7 +153,7 @@ export const testChecks: CheckRegistration[] = [
     description: 'Checks if code coverage is configured',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
+      const issues: import('@software-mri/core').Issue[] = [];
       const testFilesExist = ctx.scan.files.some(f =>
         f.relativePath.includes('.test.') || f.relativePath.includes('.spec.')
       );

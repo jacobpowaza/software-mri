@@ -1,5 +1,5 @@
 import type { CheckRegistration, CheckContext, CheckFn } from './types.js';
-import type { Issue, CategoryId } from '@mri/core';
+import type { Issue, CategoryId } from '@software-mri/core';
 
 export class CheckRegistry {
   private checks: Map<string, CheckRegistration> = new Map();

@@ -1,6 +1,6 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import type { ScanResult } from '@mri/core';
+import type { ScanResult } from '@software-mri/core';
 
 const reportPath = join(process.cwd(), '.mri-last-report.json');
 

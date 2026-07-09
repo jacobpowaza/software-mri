@@ -8,7 +8,7 @@ export const dependencyChecks: CheckRegistration[] = [
     description: 'Detects dependencies in package.json not imported in the codebase',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
+      const issues: import('@software-mri/core').Issue[] = [];
       const pkg = ctx.scan.packageJson;
       if (!pkg) return issues;
 
@@ -20,7 +20,7 @@ export const dependencyChecks: CheckRegistration[] = [
         }
       }
 
-      const srcFiles = ctx.scan.files.filter((f: import('@mri/scanner').FileEntry) =>
+      const srcFiles = ctx.scan.files.filter((f: import('@software-mri/scanner').FileEntry) =>
         (f.relativePath.startsWith('src/') || f.relativePath === 'index.ts') &&
         (f.relativePath.endsWith('.ts') || f.relativePath.endsWith('.tsx') ||
          f.relativePath.endsWith('.js') || f.relativePath.endsWith('.jsx'))
@@ -82,7 +82,7 @@ export const dependencyChecks: CheckRegistration[] = [
     description: 'Detects imports that reference packages not in package.json',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
+      const issues: import('@software-mri/core').Issue[] = [];
       const pkg = ctx.scan.packageJson;
       if (!pkg) return issues;
 
@@ -131,7 +131,7 @@ export const dependencyChecks: CheckRegistration[] = [
 
       for (const ws of workspaceGlobs) {
           const glob = ws.replace(/\/\*+$/, '').replace(/\//g, '\\/');
-          const match = ctx.scan.files.filter((f: import('@mri/scanner').FileEntry) =>
+          const match = ctx.scan.files.filter((f: import('@software-mri/scanner').FileEntry) =>
             new RegExp(`^${glob}/package\\.json$`).test(f.relativePath)
           );
           for (const pkgFile of match) {
@@ -174,7 +174,7 @@ export const dependencyChecks: CheckRegistration[] = [
     description: 'Flags projects with excessive dependency counts',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
+      const issues: import('@software-mri/core').Issue[] = [];
       const pkg = ctx.scan.packageJson;
       if (!pkg) return issues;
 
@@ -185,7 +185,7 @@ export const dependencyChecks: CheckRegistration[] = [
       const devDepCount = devDeps ? Object.keys(devDeps).length : 0;
       const total = depCount + devDepCount;
 
-      const srcFiles = ctx.scan.files.filter((f: import('@mri/scanner').FileEntry) =>
+      const srcFiles = ctx.scan.files.filter((f: import('@software-mri/scanner').FileEntry) =>
         f.relativePath.startsWith('src/') || f.relativePath === 'index.ts'
       );
 
@@ -219,7 +219,7 @@ export const dependencyChecks: CheckRegistration[] = [
     description: 'Flags dependencies using range specifiers instead of exact versions',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
+      const issues: import('@software-mri/core').Issue[] = [];
       const pkg = ctx.scan.packageJson;
       if (!pkg) return issues;
 

@@ -1,4 +1,4 @@
-import type { ScanResult, ReportFormat, ReportOutput } from '@mri/core';
+import type { ScanResult, ReportFormat, ReportOutput } from '@software-mri/core';
 import { generateJsonReport } from './json.js';
 import { generateMarkdownReport } from './markdown.js';
 import { generateHtmlReport } from './html.js';

@@ -1,6 +1,6 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { validateConfig } from '@mri/config';
+import { validateConfig } from '@software-mri/config';
 
 export async function runConfig(): Promise<void> {
   const configPath = join(process.cwd(), 'mri.config.json');

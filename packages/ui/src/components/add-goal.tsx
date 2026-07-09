@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Text, Box, useInput } from 'ink';
-import type { CategoryId } from '@mri/core';
+import type { CategoryId } from '@software-mri/core';
 
 interface AddGoalScreenProps {
   onConfirm: (title: string, category: CategoryId, targetScore: number) => void;

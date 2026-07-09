@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Text, Box, useInput } from 'ink';
-import type { Task } from '@mri/core';
+import type { Task } from '@software-mri/core';
 
 interface TaskDetailScreenProps {
   task: Task;

@@ -1,5 +1,5 @@
 {
-  "name": "@mri/core",
+  "name": "@software-mri/core",
   "version": "0.1.0",
   "description": "MRI core types, config, and goals/tasks store",
   "license": "MIT",

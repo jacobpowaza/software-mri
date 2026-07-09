@@ -1,5 +1,5 @@
 import type { CheckRegistration, CheckContext } from '../types.js';
-import type { Issue } from '@mri/core';
+import type { Issue } from '@software-mri/core';
 import { readFile } from 'node:fs/promises';
 
 export const comprehensiveChecks: CheckRegistration[] = [

@@ -1,4 +1,4 @@
-import type { ScanResult, ScanProgress, Issue, ExportOptions, ReportFormat, CategoryId } from '@mri/core';
+import type { ScanResult, ScanProgress, Issue, ExportOptions, ReportFormat, CategoryId } from '@software-mri/core';
 
 export type Screen =
   | 'welcome'

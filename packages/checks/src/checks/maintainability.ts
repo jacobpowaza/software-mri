@@ -8,7 +8,7 @@ export const maintainabilityChecks: CheckRegistration[] = [
     description: 'Checks if the project has a README file',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
+      const issues: import('@software-mri/core').Issue[] = [];
       const hasReadme = ctx.scan.files.some(f =>
         f.relativePath.toLowerCase() === 'readme.md' ||
         f.relativePath.toLowerCase() === 'readme.mdx'
@@ -43,7 +43,7 @@ export const maintainabilityChecks: CheckRegistration[] = [
     description: 'Checks if the project has a license file',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
+      const issues: import('@software-mri/core').Issue[] = [];
       const hasLicense = ctx.scan.files.some(f =>
         f.relativePath.toLowerCase().startsWith('license')
       );
@@ -80,7 +80,7 @@ export const maintainabilityChecks: CheckRegistration[] = [
     description: 'Checks if the project has contribution guidelines',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
+      const issues: import('@software-mri/core').Issue[] = [];
       const hasContributing = ctx.scan.files.some(f =>
         f.relativePath.toLowerCase().includes('contributing')
       );
@@ -113,7 +113,7 @@ export const maintainabilityChecks: CheckRegistration[] = [
     description: 'Checks if the project has CI configuration',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
+      const issues: import('@software-mri/core').Issue[] = [];
       const hasCI = ctx.scan.files.some(f =>
         f.relativePath.includes('.github/workflows') ||
         f.relativePath === '.github/workflows/ci.yml' ||
@@ -152,7 +152,7 @@ export const maintainabilityChecks: CheckRegistration[] = [
     description: 'Checks for common missing package.json scripts',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
+      const issues: import('@software-mri/core').Issue[] = [];
       const pkg = ctx.scan.packageJson;
       if (!pkg) return issues;
 
@@ -200,8 +200,8 @@ export const maintainabilityChecks: CheckRegistration[] = [
     description: 'Detects inconsistent file naming conventions',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
-      const srcFiles = ctx.scan.files.filter((f: import('@mri/scanner').FileEntry) =>
+      const issues: import('@software-mri/core').Issue[] = [];
+      const srcFiles = ctx.scan.files.filter((f: import('@software-mri/scanner').FileEntry) =>
         f.relativePath.startsWith('src/') &&
         (f.relativePath.endsWith('.ts') || f.relativePath.endsWith('.tsx'))
       );

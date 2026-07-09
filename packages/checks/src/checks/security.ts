@@ -8,8 +8,8 @@ export const securityChecks: CheckRegistration[] = [
     description: 'Detects unsafe eval() calls in source files',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
-      const srcFiles = ctx.scan.files.filter((f: import('@mri/scanner').FileEntry) =>
+      const issues: import('@software-mri/core').Issue[] = [];
+      const srcFiles = ctx.scan.files.filter((f: import('@software-mri/scanner').FileEntry) =>
         f.relativePath.startsWith('src/') && !f.isBinary &&
         (f.relativePath.endsWith('.ts') || f.relativePath.endsWith('.tsx') ||
          f.relativePath.endsWith('.js') || f.relativePath.endsWith('.jsx'))
@@ -52,8 +52,8 @@ export const securityChecks: CheckRegistration[] = [
     description: 'Detects console.log statements in production source files',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
-      const srcFiles = ctx.scan.files.filter((f: import('@mri/scanner').FileEntry) =>
+      const issues: import('@software-mri/core').Issue[] = [];
+      const srcFiles = ctx.scan.files.filter((f: import('@software-mri/scanner').FileEntry) =>
         f.relativePath.startsWith('src/') && !f.relativePath.endsWith('.test.ts') &&
         !f.relativePath.endsWith('.spec.ts') && !f.isBinary &&
         (f.relativePath.endsWith('.ts') || f.relativePath.endsWith('.tsx') ||
@@ -102,8 +102,8 @@ export const securityChecks: CheckRegistration[] = [
     description: 'Detects hardcoded localhost URLs in source files',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
-      const srcFiles = ctx.scan.files.filter((f: import('@mri/scanner').FileEntry) =>
+      const issues: import('@software-mri/core').Issue[] = [];
+      const srcFiles = ctx.scan.files.filter((f: import('@software-mri/scanner').FileEntry) =>
         f.relativePath.startsWith('src/') && !f.isBinary &&
         (f.relativePath.endsWith('.ts') || f.relativePath.endsWith('.tsx') ||
          f.relativePath.endsWith('.js') || f.relativePath.endsWith('.jsx'))
@@ -148,7 +148,7 @@ export const securityChecks: CheckRegistration[] = [
     description: 'Checks for common missing .gitignore entries',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
+      const issues: import('@software-mri/core').Issue[] = [];
       const hasGitignore = ctx.scan.files.some(f => f.relativePath === '.gitignore');
 
       if (!hasGitignore) {
@@ -221,8 +221,8 @@ export const securityChecks: CheckRegistration[] = [
     description: 'Detects Math.random() used in place of crypto.random',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
-      const srcFiles = ctx.scan.files.filter((f: import('@mri/scanner').FileEntry) =>
+      const issues: import('@software-mri/core').Issue[] = [];
+      const srcFiles = ctx.scan.files.filter((f: import('@software-mri/scanner').FileEntry) =>
         f.relativePath.startsWith('src/') && !f.isBinary &&
         (f.relativePath.endsWith('.ts') || f.relativePath.endsWith('.tsx') ||
          f.relativePath.endsWith('.js') || f.relativePath.endsWith('.jsx'))
@@ -266,8 +266,8 @@ export const securityChecks: CheckRegistration[] = [
     description: 'Detects potential secret exposure in environment configuration',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
-      const envFiles = ctx.scan.files.filter((f: import('@mri/scanner').FileEntry) =>
+      const issues: import('@software-mri/core').Issue[] = [];
+      const envFiles = ctx.scan.files.filter((f: import('@software-mri/scanner').FileEntry) =>
         f.relativePath === '.env' || f.relativePath === '.env.local'
       );
 

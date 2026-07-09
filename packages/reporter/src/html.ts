@@ -1,4 +1,4 @@
-import type { ScanResult } from '@mri/core';
+import type { ScanResult } from '@software-mri/core';
 
 export function generateHtmlReport(result: ScanResult): string {
   const categoriesHtml = result.categories.map(cat => `

@@ -20,13 +20,13 @@
     "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
-    "@mri/core": "workspace:*",
-    "@mri/scanner": "workspace:*",
-    "@mri/checks": "workspace:*",
-    "@mri/scoring": "workspace:*",
-    "@mri/reporter": "workspace:*",
-    "@mri/ui": "workspace:*",
-    "@mri/config": "workspace:*",
+    "@software-mri/core": "workspace:*",
+    "@software-mri/scanner": "workspace:*",
+    "@software-mri/checks": "workspace:*",
+    "@software-mri/scoring": "workspace:*",
+    "@software-mri/reporter": "workspace:*",
+    "@software-mri/ui": "workspace:*",
+    "@software-mri/config": "workspace:*",
     "ink": "^5.0.1",
     "react": "^18.3.1",
     "yargs": "^17.7.2"

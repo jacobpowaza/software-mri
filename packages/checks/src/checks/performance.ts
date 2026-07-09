@@ -8,7 +8,7 @@ export const performanceChecks: CheckRegistration[] = [
     description: 'Flags dependencies known to be large',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
+      const issues: import('@software-mri/core').Issue[] = [];
       const pkg = ctx.scan.packageJson;
       if (!pkg) return issues;
 
@@ -61,8 +61,8 @@ export const performanceChecks: CheckRegistration[] = [
     description: 'Detects barrel files (index.ts re-exporting many modules)',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
-      const indexFiles = ctx.scan.files.filter((f: import('@mri/scanner').FileEntry) =>
+      const issues: import('@software-mri/core').Issue[] = [];
+      const indexFiles = ctx.scan.files.filter((f: import('@software-mri/scanner').FileEntry) =>
         f.relativePath.endsWith('/index.ts') || f.relativePath.endsWith('/index.tsx')
       );
 
@@ -105,12 +105,12 @@ export const performanceChecks: CheckRegistration[] = [
     description: 'Detects heavy client-side imports in Next.js projects',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
+      const issues: import('@software-mri/core').Issue[] = [];
       const isNextJS = ctx.project.frameworks.includes('nextjs');
       if (!isNextJS) return issues;
 
       const heavyClientModules = ['fs', 'child_process', 'os', 'path'];
-      const clientFiles = ctx.scan.files.filter((f: import('@mri/scanner').FileEntry) =>
+      const clientFiles = ctx.scan.files.filter((f: import('@software-mri/scanner').FileEntry) =>
         f.relativePath.includes('"use client"') || f.relativePath.includes("'use client'")
       );
 
@@ -152,10 +152,10 @@ export const performanceChecks: CheckRegistration[] = [
     description: 'Detects the same module imported in many files',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
+      const issues: import('@software-mri/core').Issue[] = [];
       const importCount = new Map<string, number>();
 
-      const srcFiles = ctx.scan.files.filter((f: import('@mri/scanner').FileEntry) =>
+      const srcFiles = ctx.scan.files.filter((f: import('@software-mri/scanner').FileEntry) =>
         !f.isBinary && !f.relativePath.includes('node_modules') &&
         (f.relativePath.endsWith('.ts') || f.relativePath.endsWith('.tsx') ||
          f.relativePath.endsWith('.js') || f.relativePath.endsWith('.jsx'))
@@ -191,7 +191,7 @@ export const performanceChecks: CheckRegistration[] = [
           severity: 'low',
           category: 'performanceRisk',
           confidence: 'medium',
-          files: srcFiles.filter((f: import('@mri/scanner').FileEntry) => {
+          files: srcFiles.filter((f: import('@software-mri/scanner').FileEntry) => {
             // We'd need to re-check each file, but for simplicity we keep track
             return true;
           }).slice(0, 5).map(f => f.relativePath),
@@ -215,7 +215,7 @@ export const performanceChecks: CheckRegistration[] = [
     description: 'Detects extremely large files that may affect parse time',
     enabled: true,
     async run(ctx: CheckContext) {
-      const issues: import('@mri/core').Issue[] = [];
+      const issues: import('@software-mri/core').Issue[] = [];
       const thresholdBytes = 500 * 1024; // 500KB
 
       for (const file of ctx.scan.files) {

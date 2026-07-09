@@ -1,6 +1,6 @@
 import { writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { DEFAULT_CONFIG } from '@mri/core';
+import { DEFAULT_CONFIG } from '@software-mri/core';
 
 export async function runInit(): Promise<void> {
   const configPath = join(process.cwd(), 'mri.config.json');

@@ -20,37 +20,37 @@ importers:
 
   packages/checks:
     dependencies:
-      '@mri/config':
+      '@software-mri/config':
         specifier: workspace:*
         version: link:../config
-      '@mri/core':
+      '@software-mri/core':
         specifier: workspace:*
         version: link:../core
-      '@mri/scanner':
+      '@software-mri/scanner':
         specifier: workspace:*
         version: link:../scanner
 
   packages/cli:
     dependencies:
-      '@mri/checks':
+      '@software-mri/checks':
         specifier: workspace:*
         version: link:../checks
-      '@mri/config':
+      '@software-mri/config':
         specifier: workspace:*
         version: link:../config
-      '@mri/core':
+      '@software-mri/core':
         specifier: workspace:*
         version: link:../core
-      '@mri/reporter':
+      '@software-mri/reporter':
         specifier: workspace:*
         version: link:../reporter
-      '@mri/scanner':
+      '@software-mri/scanner':
         specifier: workspace:*
         version: link:../scanner
-      '@mri/scoring':
+      '@software-mri/scoring':
         specifier: workspace:*
         version: link:../scoring
-      '@mri/ui':
+      '@software-mri/ui':
         specifier: workspace:*
         version: link:../ui
       ink:
@@ -72,7 +72,7 @@ importers:
 
   packages/config:
     dependencies:
-      '@mri/core':
+      '@software-mri/core':
         specifier: workspace:*
         version: link:../core
       cosmiconfig:
@@ -83,16 +83,16 @@ importers:
 
   packages/reporter:
     dependencies:
-      '@mri/core':
+      '@software-mri/core':
         specifier: workspace:*
         version: link:../core
 
   packages/scanner:
     dependencies:
-      '@mri/config':
+      '@software-mri/config':
         specifier: workspace:*
         version: link:../config
-      '@mri/core':
+      '@software-mri/core':
         specifier: workspace:*
         version: link:../core
       ignore:
@@ -104,13 +104,13 @@ importers:
 
   packages/scoring:
     dependencies:
-      '@mri/core':
+      '@software-mri/core':
         specifier: workspace:*
         version: link:../core
 
   packages/ui:
     dependencies:
-      '@mri/core':
+      '@software-mri/core':
         specifier: workspace:*
         version: link:../core
       cli-boxes:

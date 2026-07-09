@@ -1,5 +1,5 @@
 {
-  "name": "@mri/scoring",
+  "name": "@software-mri/scoring",
   "version": "0.1.0",
   "description": "MRI scoring engine and category calculations",
   "license": "MIT",
@@ -17,7 +17,7 @@
     "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
-    "@mri/core": "workspace:*"
+    "@software-mri/core": "workspace:*"
   },
   "publishConfig": {
     "access": "public"

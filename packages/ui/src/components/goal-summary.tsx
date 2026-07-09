@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, Box } from 'ink';
-import type { Goal } from '@mri/core';
+import type { Goal } from '@software-mri/core';
 import { useTerminalSize } from '../hooks/use-terminal-size.js';
 
 interface GoalSummaryProps {

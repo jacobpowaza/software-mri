@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { generateJsonReport, generateMarkdownReport, generateHtmlReport } from '../index.js';
-import type { ScanResult, CategoryScore } from '@mri/core';
+import type { ScanResult, CategoryScore } from '@software-mri/core';
 
 function createMockResult(): ScanResult {
   const categoryScore: CategoryScore = {

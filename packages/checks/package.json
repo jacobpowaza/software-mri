@@ -1,5 +1,5 @@
 {
-  "name": "@mri/checks",
+  "name": "@software-mri/checks",
   "version": "0.1.0",
   "description": "MRI analysis checks (deps, TS, security, etc.)",
   "license": "MIT",
@@ -17,9 +17,9 @@
     "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
-    "@mri/core": "workspace:*",
-    "@mri/scanner": "workspace:*",
-    "@mri/config": "workspace:*"
+    "@software-mri/core": "workspace:*",
+    "@software-mri/scanner": "workspace:*",
+    "@software-mri/config": "workspace:*"
   },
   "publishConfig": {
     "access": "public"

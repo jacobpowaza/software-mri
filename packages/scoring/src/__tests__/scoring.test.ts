@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { calculateScores } from '../index.js';
-import type { Issue, MriConfig, ProjectInfo } from '@mri/core';
+import type { Issue, MriConfig, ProjectInfo } from '@software-mri/core';
 
 const mockConfig: MriConfig = {
   ignoredFolders: [],

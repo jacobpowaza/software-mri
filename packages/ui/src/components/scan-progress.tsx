@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, Box } from 'ink';
-import type { ScanProgress } from '@mri/core';
+import type { ScanProgress } from '@software-mri/core';
 
 interface ScanProgressViewProps {
   progress: ScanProgress;

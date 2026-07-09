@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Text, Box, useInput } from 'ink';
-import type { ScanResult, CategoryScore, Issue } from '@mri/core';
+import type { ScanResult, CategoryScore, Issue } from '@software-mri/core';
 import { useTerminalSize } from '../hooks/use-terminal-size.js';
 import { execSync } from 'node:child_process';
 

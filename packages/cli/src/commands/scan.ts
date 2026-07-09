@@ -1,11 +1,11 @@
 import { join } from 'node:path';
 import { writeFile } from 'node:fs/promises';
-import { createScanContext, detectProject } from '@mri/scanner';
-import { createCheckRegistry } from '@mri/checks';
-import { calculateScores } from '@mri/scoring';
-import { generateReport } from '@mri/reporter';
-import { loadConfig } from '@mri/config';
-import type { ReportFormat, ScanResult, ScanPhase, MriConfig } from '@mri/core';
+import { createScanContext, detectProject } from '@software-mri/scanner';
+import { createCheckRegistry } from '@software-mri/checks';
+import { calculateScores } from '@software-mri/scoring';
+import { generateReport } from '@software-mri/reporter';
+import { loadConfig } from '@software-mri/config';
+import type { ReportFormat, ScanResult, ScanPhase, MriConfig } from '@software-mri/core';
 
 interface ScanOptions {
   ci: boolean;

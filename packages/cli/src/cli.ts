@@ -1,6 +1,6 @@
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
-import type { ReportFormat, CategoryId } from '@mri/core';
+import type { ReportFormat, CategoryId } from '@software-mri/core';
 
 const CATEGORIES: string[] = [
   'architecture', 'dependencies', 'deadCode', 'duplicates', 'typeSafety',
