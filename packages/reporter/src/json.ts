@@ -8,7 +8,7 @@ function serializeResult(result: ScanResult) {
   return {
     meta: {
       tool: 'Software MRI',
-      version: '0.1.0',
+      version: '0.1.1',
       generatedAt: new Date().toISOString(),
     },
     project: {

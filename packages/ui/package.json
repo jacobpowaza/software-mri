@@ -1,6 +1,6 @@
 {
   "name": "@software-mri/ui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "MRI Ink-based interactive TUI components",
   "license": "MIT",
   "type": "module",
@@ -8,7 +8,9 @@
     ".": "./dist/index.js",
     "./components/*": "./dist/components/*.js"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",

@@ -1,6 +1,6 @@
 {
   "name": "software-mri",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Production readiness diagnosis for your codebase",
   "license": "MIT",

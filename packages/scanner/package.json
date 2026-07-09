@@ -1,13 +1,15 @@
 {
   "name": "@software-mri/scanner",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "MRI filesystem scanner and project detection",
   "license": "MIT",
   "type": "module",
   "exports": {
     ".": "./dist/index.js"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
